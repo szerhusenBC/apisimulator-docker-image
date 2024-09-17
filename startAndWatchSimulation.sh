@@ -9,12 +9,12 @@ log () {
 
 startApiSimulation() {
     log "Starting API simulation"
-    /apisimulator/apisimulator-http-1.12/bin/apisimulator start $SIMULATIONS_DIRECTORY &
+    /apisimulator-http/bin/apisimulator start $SIMULATIONS_DIRECTORY &
 }
 
 stopApiSimulation() {
     log "Stopping API simulation"
-    /apisimulator/apisimulator-http-1.12/bin/apisimulator stop $SIMULATIONS_DIRECTORY
+    /apisimulator-http/bin/apisimulator stop $SIMULATIONS_DIRECTORY
 }
 
 startApiSimulation

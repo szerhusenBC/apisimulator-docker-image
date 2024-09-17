@@ -1,4 +1,5 @@
 # apisimulator-docker-image
+
 Custom docker image for API Simulator that is a configuration-driven tool for creating and running API simulations. The image is based on the
 [API Simulator for Easy and Realistic API Simulations](https://apisimulator.io/). There is also an
 [official Docker image](https://hub.docker.com/r/apimastery/apisimulator) available, but
@@ -19,7 +20,7 @@ or using Docker compose
 version: '3.8'
 services:
   apisimulator:
-    image: szerhusen/apisimulator:latest
+    image: szerhusenbc/apisimulator:latest
     container_name: apisimulator
     ports:
       - "6090:6090"
@@ -46,7 +47,7 @@ or using Docker compose
 version: '3.8'
 services:
   apisimulator:
-    image: szerhusen/apisimulator:latest
+    image: szerhusenbc/apisimulator:latest
     container_name: apisimulator
     ports:
       - "6090:6090"
@@ -58,6 +59,8 @@ services:
 
 Now the API Simulator is available with the custom simulations. **Everytime a file in the simulations directory is changed, the API Simulator will restart
 internally with the new configurations.**
+
+You can also mount out the logs directory to get access to the logs. You have to mount the path `/apisimulator-http/logs/` to a directory on your host system.
 
 ### Documentation
 

@@ -9,9 +9,11 @@ RUN apk add bash curl tar gzip inotify-tools --no-cache
 RUN cd /
 RUN curl -O https://apisimulator.io/downloads/apisimulator-http-1.12-distro.tar.gz
 RUN tar -xzf apisimulator-http-1.12-distro.tar.gz
+RUN mv /apisimulator/apisimulator-http-1.12 /apisimulator-http
 RUN mkdir /simulations
-RUN cp /apisimulator/apisimulator-http-1.12/examples/hello-world-sim/apisim.yaml /simulations/apisim.yaml
-RUN rm -rf /apisimulator/apisimulator-http-1.12/examples
+RUN cp /apisimulator-http/examples/hello-world-sim/apisim.yaml /simulations/apisim.yaml
+RUN rm -rf /apisimulator
+RUN rm -rf /apisimulator-http/examples
 RUN rm apisimulator-http-1.12-distro.tar.gz
 
 # Remove unnecessary packages
@@ -21,8 +23,9 @@ RUN apk del curl tar gzip
 COPY ./startAndWatchSimulation.sh /startAndWatchSimulation.sh
 RUN chmod +x /startAndWatchSimulation.sh
 
+# Configure logging
 ENV APISIMULATOR_LOG=file
-ENV APISIMULATOR_LOG_FILENAME=/apisimulator/apisimulator-http-1.12/logs/apisimulator.log
+ENV APISIMULATOR_LOG_FILENAME=/apisimulator-http/logs/apisimulator.log
 
 EXPOSE 6090
 
